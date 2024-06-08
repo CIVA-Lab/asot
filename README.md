@@ -16,9 +16,9 @@ vot initialize vot2024/main
 
 This will download the data. The main thing is that you should have a `sequences` folder with all the challenge sequences from VOTS2023/2024.
 
-Create a directory to store results:
+Create a directory to store results and logs (for debugging):
 ```shell
-mkdir results
+mkdir results logs
 ```
 
 ## Run the tracker
