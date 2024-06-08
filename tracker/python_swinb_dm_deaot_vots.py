@@ -8,11 +8,11 @@ import importlib
 import numpy as np
 import random
 import collections
-import dmaot.dataloaders.video_transforms as tr
+import dataloaders.video_transforms as tr
 from torchvision import transforms
-from dmaot.networks.engines import build_engine
-from dmaot.utils.checkpoint import load_network
-from dmaot.networks.models import build_vos_model
+from networks.engines import build_engine
+from utils.checkpoint import load_network
+from networks.models import build_vos_model
 import vot_utils
 from tools.transfer_predicted_mask2vottype import transfer_mask
 
