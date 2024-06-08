@@ -2,6 +2,7 @@ results
 sequences
 logs
 *.pth
+config.yaml
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

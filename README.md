@@ -32,7 +32,7 @@ docker build -t tracker-image .
 Make sure the `results` and `sequences` directories exist on your host machine before running this command. This will also ensure that the container can write outputs to these directories.
 
 ```bash
-docker run -v $(pwd)/results:/app/results -v $(pwd)/sequences:/app/sequences tracker-image
+docker run --gpus all -v $(pwd)/results:/app/results -v $(pwd)/sequences:/app/sequences -v $(pwd)/logs:/app/logs tracker-image
 ```
 
 This command mounts the `results` and `sequences` directories from your current directory to the container and runs the default command specified in the Dockerfile.

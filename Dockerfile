@@ -1,5 +1,5 @@
-# Use Python 3.10 base image
-FROM python:3.10
+# Use Pytorch base image
+FROM pytorch/pytorch
 
 # Set the working directory in the container
 WORKDIR /app
@@ -21,7 +21,7 @@ RUN gdown "1g4E-F0RPOx9Nd6J7tU9AE1TjsouL4oZq&confirm=t" -O ./tracker/pretrain_mo
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Volume mount points (specify these when running the container)
-VOLUME ["/app/results", "/app/sequences"]
+VOLUME ["/app/results", "/app/sequences", "/app/logs"]
 
 # Default command to run when starting the container
 CMD ["vot", "--debug", "evaluate", "swinb_dm_deaot_vots"]
