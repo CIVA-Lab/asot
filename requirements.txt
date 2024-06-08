@@ -1,1 +1,4 @@
 vot-toolkit
+gdown
+opencv-python
+matplotlib==3.8.0

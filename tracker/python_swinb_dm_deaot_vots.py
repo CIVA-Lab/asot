@@ -18,6 +18,8 @@ from tools.transfer_predicted_mask2vottype import transfer_mask
 
 Rectangle = collections.namedtuple('Rectangle', ['x', 'y', 'width', 'height'])
 
+DIR_PATH = os.path.dirname(__file__)
+
 def seed_torch(seed=0):
     random.seed(seed)
     os.environ['PYTHONHASHSEED'] = str(seed)
@@ -148,7 +150,7 @@ def read_img(img_path):
 config = {
     'exp_name': 'default',
     'model': 'swinb_dm_deaotl',
-    'pretrain_model_path': 'pretrained_models/SwinB_DeAOTL_PRE_YTB_DAV_VIP_MOSE_OVIS_LASOT_GOT.pth',
+    'pretrain_model_path': 'pretrain_models/SwinB_DeAOTL_PRE_YTB_DAV_VIP_MOSE_OVIS_LASOT_GOT.pth',
     'config': 'pre_ytb_dav',
     'long_max': 10,
     'long_gap': 30,
@@ -186,6 +188,9 @@ for object in objects:
 engine_config = importlib.import_module('configs.' + f'{config["config"]}')
 cfg = engine_config.EngineConfig(config['exp_name'], config['model'])
 cfg.TEST_CKPT_PATH = os.path.join(DIR_PATH, config['pretrain_model_path'])
+if not os.path.isfile(cfg.TEST_CKPT_PATH):
+  raise ValueError(f'Could not find ckeckpoint in {cfg.TEST_CKPT_PATH}')
+
 cfg.TEST_LONG_TERM_MEM_MAX = config['long_max']
 cfg.TEST_LONG_TERM_MEM_GAP = config['long_gap']
 cfg.TEST_SHORT_TERM_MEM_GAP = config['short_gap']
